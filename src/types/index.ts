@@ -1,7 +1,3 @@
-export type SocialPlatform = 'x' | 'instagram' | 'jueJin' | 'github' | 'linkedin' | 'blog'
-
-export type ContactMethod = 'email' | 'phone' | 'wx'
-
 export interface TimeRange {
   /**
    * 开始时间 (推荐格式 YYYY-MM)
@@ -114,19 +110,13 @@ interface OpenSourceProject {
   techStack?: string[] // 开源项目也应该有技术栈
 }
 
-export interface Social {
-  /**
-   * 社交平台名称
-   */
-  socialName: SocialPlatform
-  /**
-   * 账号名称
-   */
-  accountName?: string
-  /**
-   * 平台链接
-   */
-  url?: string
+export type SocialPlatform = 'x' | 'instagram' | 'jueJin' | 'github' | 'linkedin' | 'blog' | 'wx'
+
+export type CommunicationType = 'email' | 'phone' | 'wx'
+
+export interface ContactMethod {
+  type: CommunicationType | SocialPlatform
+  value: string
 }
 
 /**
@@ -154,29 +144,9 @@ export interface Introduce {
    */
   avatarUrl?: string
   /**
-   * 基础信息
-   */
-  /**
-   * 位置
-   */
-  location?: string
-  /**
-   * 社交平台
-   */
-  social?: Social[]
-  /**
    * 联系方式
    */
-  contact: {
-    /**
-     * 邮箱
-     */
-    email: string
-    /**
-     * 手机号
-     */
-    phone?: string
-  }
+  contactMethods: ContactMethod[]
 }
 
 /**

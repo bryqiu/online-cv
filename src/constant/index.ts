@@ -11,28 +11,32 @@ export const resumeData: ResumeSchema = {
     ],
     about: '8 年前端深耕经验，致力于构建**极速、稳定且具备高度可扩展性**的 Web 工业级应用。主导过千万级 DAU 产品的架构升级，深谙微内核架构、跨端渲染引擎及研发效能中台建设。崇尚“技术驱动业务”，擅长用工程化思维破解研发效率瓶颈。',
     avatarUrl: 'https://api.dicebear.com/7.x/avataaars/svg?seed=River',
-    location: '中国 北京',
-    social: [
+    contactMethods: [
       {
-        socialName: 'github',
-        accountName: 'river-arc',
-        url: 'https://github.com/mock-river-arc',
+        type: 'email',
+        value: 'river.arch@example.com',
       },
       {
-        accountName: '技术专栏',
-        socialName: 'jueJin',
-        url: 'https://juejin.cn/user/mock-river',
+        type: 'phone',
+        value: '+86 139-8888-9999',
       },
       {
-        socialName: 'blog',
-        accountName: 'River.dev',
-        url: 'https://river-tech-vision.io',
+        type: 'wx',
+        value: 'mock-river-arc',
+      },
+      {
+        type: 'x',
+        value: 'mock-river-arc',
+      },
+      {
+        type: 'instagram',
+        value: 'mock-river-arc',
+      },
+      {
+        type: 'github',
+        value: 'mock-river-arc',
       },
     ],
-    contact: {
-      email: 'river.arch@example.com',
-      phone: '+86 139-8888-9999',
-    },
   },
 
   skills: [

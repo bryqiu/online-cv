@@ -3,14 +3,14 @@ import type { ResumeSchema } from '@/types'
 export const resumeData: ResumeSchema = {
   introduce: {
     name: '李承乾 (River)',
-    initials: 'JH',
+    avatarFallback: 'River',
     tags: [
       '前端技术架构师',
       '开源引擎布道师',
       '全栈解决方案专家',
     ],
-    about: '8 年前端深耕经验，致力于构建**极速、稳定且具备高度可扩展性**的 Web 工业级应用。主导过千万级 DAU 产品的架构升级，深谙微内核架构、跨端渲染引擎及研发效能中台建设。崇尚“技术驱动业务”，擅长用工程化思维破解研发效率瓶颈。',
-    avatarUrl: 'https://api.dicebear.com/7.x/avataaars/svg?seed=River',
+    about: '8 年前端深耕经验，致力于构建**极速、稳定且具备高度可扩展性**的 Web 应用。主导过千万级 DAU 产品的架构升级，深谙微内核架构、跨端渲染引擎及研发效能中台建设。',
+    avatarUrl: '/avatar.png',
     contactMethods: [
       {
         type: 'email',
@@ -21,15 +21,7 @@ export const resumeData: ResumeSchema = {
         value: '+86 139-8888-9999',
       },
       {
-        type: 'wx',
-        value: 'mock-river-arc',
-      },
-      {
         type: 'x',
-        value: 'mock-river-arc',
-      },
-      {
-        type: 'instagram',
         value: 'mock-river-arc',
       },
       {
@@ -57,7 +49,6 @@ export const resumeData: ResumeSchema = {
       highlights: [
         '**全链路效能革新**：主导了名为“极光(Aurora)”的研发中台建设，通过自研基于 Rust 的构建器替代传统 Webpack，将 300+ 模块的冷启动时间从 90s 降低至 4s，全员研发效率提升 65%。',
         '**微内核架构升级**：针对公司旗舰级云端办公套件，设计并落地了插件化微内核架构，支持第三方开发者通过 JS Sandbox 安全接入插件，成功构建了拥有 100+ 扩展应用的生态体系。',
-        '**极致性能压榨**：针对实时协作场景，引入 WebAssembly 处理大规模冲突合并算法（OT/CRDT），将 CPU 占用率降低了 40%，解决了长文档编辑下的卡顿顽疾。',
       ],
     },
     {
@@ -79,7 +70,7 @@ export const resumeData: ResumeSchema = {
       summary: '为超大规模企业级应用设计的 UI 编排与自动化协议标准。',
       description: [
         '**动态协议解析**：设计了一套自研的语义化 DSL，支持通过配置化方式生成复杂的逻辑流图，解决了业务逻辑频繁变动带来的代码堆砌问题。',
-        '**异构组件映射**：实现了跨框架的组件适配层，支持在同一页面内混合渲染 React 与 Vue 组件，解决了历史遗留系统的平滑迁移难题。',
+        '**异构组件映射**：实现了跨框架组件适配层，支持在同一页面内混合渲染 React 与 Vue 组件，解决了遗留平滑迁移难题。',
         '**性能隔离机制**：引入了 Shadow DOM 与样式沙箱，确保了不同业务模块之间的样式互不干扰，组件冲突率为 0。',
       ],
       position: '架构负责人',
@@ -107,10 +98,6 @@ export const resumeData: ResumeSchema = {
       degree: '硕士',
       startTime: '2014-09',
       endTime: '2017-06',
-      description: [
-        '主研方向：分布式图形渲染',
-        '获得国家级奖学金，在国际期刊发表过关于浏览器合成层优化的论文。',
-      ],
     },
   ],
 

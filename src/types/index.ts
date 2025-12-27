@@ -130,7 +130,7 @@ export interface Introduce {
   /**
    * 头像加载失败、loading时的兜底显示
    */
-  initials?: string
+  avatarFallback?: string
   /**
    * 职业标签
    */

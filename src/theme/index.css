@@ -185,4 +185,10 @@
   html {
     @apply font-mono scroll-smooth bg-card text-card-foreground;
   }
+
+  @media print {
+    @page {
+      margin: 0;
+    }
+  }
 }

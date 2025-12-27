@@ -7,7 +7,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body>
+      <body className="print:p-[1.5cm]">
         {children}
       </body>
     </html>

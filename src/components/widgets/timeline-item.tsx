@@ -38,7 +38,7 @@ function TimelineItem(props: TimelineItemProps) {
                 <div className="flex items-center gap-x-1">
                   <Anchor href={url} linkText={title} canCopy={false} className="text-sm font-semibold">
                   </Anchor>
-                  <SquareArrowOutUpRight className="size-3 shrink-0 text-card-foreground/50" />
+                  <SquareArrowOutUpRight className="size-3 shrink-0 text-card-foreground/50 print:hidden" />
                 </div>
               )
             : <h3 className="font-semibold text-sm">{title}</h3>

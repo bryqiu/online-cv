@@ -3,8 +3,14 @@
 import type { ContactMethod, Introduce as IntroduceProps } from '@/types'
 import { Paperclip } from 'lucide-react'
 import { useMemo } from 'react'
-import Anchor from '@/components/widgets/anchor'
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from '@/components/ui/avatar'
 import { SOCIAL_ICON_MAP } from '@/constant/icon'
+import { cn } from '@/lib/utils'
+import Anchor from './widgets/anchor'
 import MarkDown from './widgets/mark-down'
 
 function ContactItem(prop: ContactMethod, index: number) {
@@ -20,12 +26,12 @@ function ContactItem(prop: ContactMethod, index: number) {
 }
 
 function Introduce(props: IntroduceProps) {
-  const { name, tags, about, contactMethods } = props
+  const { name, tags, about, contactMethods, avatarUrl, avatarFallback } = props
 
   return (
     <header className="flex flex-col gap-y-2">
       {/** 基本介绍 */}
-      <div className="flex justify-between gap-x-6">
+      <div className={cn('flex  gap-x-6', avatarUrl && 'justify-between')}>
         <div className="flex flex-col gap-1.5 flex-1">
           <h1 className="text-2xl font-bold">
             {name}
@@ -41,10 +47,16 @@ function Introduce(props: IntroduceProps) {
             {contactMethods.map((item, index) => ContactItem(item, index))}
           </div>
         </div>
-        {/** 头像 */}
-        <div className="flex items-center justify-center">
-          <div className="size-26 rounded-lg bg-secondary flex items-center justify-center">头像</div>
-        </div>
+        {
+          avatarUrl && (
+            <div className="flex items-center justify-center">
+              <Avatar className="rounded-lg size-26">
+                <AvatarImage src={avatarUrl} alt={name} />
+                <AvatarFallback>{avatarFallback || name}</AvatarFallback>
+              </Avatar>
+            </div>
+          )
+        }
       </div>
 
     </header>

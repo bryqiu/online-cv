@@ -6,9 +6,11 @@
 
 基于 **Next.js 16 + Tailwind CSS** 的在线简历。极简设计，更改配置即可快速部署。
 
-[在线演示 (Demo)](https://your-demo-link.vercel.app) ▪ [快速开始](#快速开始) ▪ [部署指南](#部署指南)
+[在线演示 (Demo)](https://online-cv-landing.vercel.app/) ▪ [快速开始](#快速开始) ▪ [部署指南](#部署指南)
 
 ## 截图
+
+![online-cv](https://github.com/user-attachments/assets/f1815c35-3c52-4620-809a-e14003bbaaaf)
 
 ## 如何配置为我的简历？
 

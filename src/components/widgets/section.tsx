@@ -11,7 +11,7 @@ function Section(props: SectionProps) {
   const { title, children, className = '' } = props
   return (
     <section className={cn('', className)}>
-      <h2 className="text-lg font-semibold mb-3 border-b border-border pb-1 tracking-tight text-foreground">
+      <h2 className="text-base sm:text-lg font-semibold mb-3 border-b border-border pb-1 tracking-tight text-foreground">
         {title}
       </h2>
       {children}

@@ -49,13 +49,13 @@ function ActionToolbar() {
   ]
 
   return (
-    <div className="fixed bottom-8 right-8 print:hidden">
-      <div className="flex flex-col gap-y-3">
+    <div className="fixed bottom-0 max-sm:left-0 max-sm:h-12 max-sm:border max-sm:border-card-foreground/10 max-sm:w-full sm:bottom-8 sm:right-8 z-50 print:hidden max-sm:bg-background/60 max-sm:backdrop-blur-xs max-sm:transition-all">
+      <div className="flex flex-row sm:flex-col gap-y-3 max-sm:h-full max-sm:justify-center max-sm:items-center gap-x-4">
         {
           actionList.map((item, index) => (
             <Tooltip key={index} {...item.tipProps}>
               <TooltipTrigger asChild {...item.tipTrigger}>
-                <Button variant="outline" size="icon" className="rounded-full cursor-pointer" onClick={item.actionClick} {...item.btnProps}>
+                <Button variant="outline" size="icon" className="rounded-md sm:rounded-full cursor-pointer max-sm:shadow-none" onClick={item.actionClick} {...item.btnProps}>
                   {item.icon}
                 </Button>
               </TooltipTrigger>

@@ -31,26 +31,26 @@ function Introduce(props: IntroduceProps) {
   return (
     <header className="flex flex-col gap-y-2">
       {/** 基本介绍 */}
-      <div className={cn('flex  gap-x-6', avatarUrl && 'justify-between')}>
+      <div className={cn('flex flex-col-reverse gap-y-4 sm:flex-row sm:gap-x-6 sm:gap-y-0', avatarUrl && 'justify-between')}>
         <div className="flex flex-col gap-1.5 flex-1">
-          <h1 className="text-2xl font-bold">
+          <h1 className="text-xl sm:text-2xl font-bold">
             {name}
           </h1>
-          <div className="flex items-center gap-x-2 flex-wrap text-sm font-semibold">
+          <div className="flex items-center gap-x-2 flex-wrap text-xs sm:text-sm font-semibold">
             {tags?.join(' / ')}
           </div>
 
-          <MarkDown className="text-sm text-foreground/80 text-pretty">{about}</MarkDown>
+          <MarkDown className="text-xs sm:text-sm text-foreground/80 text-pretty">{about}</MarkDown>
 
           {/** 联系信息 & 社交平台 */}
-          <div className="mt-2 grid grid-cols-2 gap-1">
+          <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-1">
             {contactMethods.map((item, index) => ContactItem(item, index))}
           </div>
         </div>
         {
           avatarUrl && (
-            <div className="flex items-center justify-center">
-              <Avatar className="rounded-lg size-26">
+            <div className="flex items-center justify-start sm:justify-center">
+              <Avatar className="rounded-lg size-20 sm:size-26">
                 <AvatarImage src={avatarUrl} alt={name} />
                 <AvatarFallback>{avatarFallback || name}</AvatarFallback>
               </Avatar>

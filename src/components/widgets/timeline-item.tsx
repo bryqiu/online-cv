@@ -24,35 +24,60 @@ interface TimelineItemProps extends TimeRange {
   className?: ClassValue
 }
 
+function MetaItem({ metaList }: { metaList: string[] }) {
+  return (
+    <div className="flex items-center flex-wrap sm:mt-0">
+      {' '}
+      {metaList.length && metaList.map((item, index) => (
+        <React.Fragment key={index}>
+          <span className={cn('text-xs text-card-foreground/50 mx-0.5', {
+            'hidden sm:inline': index === 0,
+          })}
+          >
+            |
+          </span>
+          <span className="text-xs font-medium text-card-foreground/80 sm:mr-0">
+            {item}
+          </span>
+        </React.Fragment>
+      ))}
+    </div>
+  )
+}
+
+function TimeDisplay({ startTime, endTime, className }: TimeRange & { className?: string }) {
+  return (
+    <div className={cn('text-xs text-card-foreground/60 whitespace-nowrap tabular-nums shrink-0', className)}>
+      {`${startTime} - ${endTime}`}
+    </div>
+  )
+}
+
 function TimelineItem(props: TimelineItemProps) {
   const { title, meta, startTime, endTime, className, url } = props
 
-  const metaItems = Array.isArray(meta) ? meta : [meta]
+  const metaList = Array.isArray(meta) ? meta : [meta]
 
   return (
-    <div className={cn('flex items-center justify-between gap-x-3', className)}>
-      <div className="flex items-center gap-1 flex-1 truncate">
-        {
-          url
-            ? (
-                <div className="flex items-center gap-x-1">
-                  <Anchor href={url} linkText={title} canCopy={false} className="text-sm font-semibold">
-                  </Anchor>
-                  <SquareArrowOutUpRight className="size-3 shrink-0 text-card-foreground/50 print:hidden" />
-                </div>
-              )
-            : <h3 className="font-semibold text-sm">{title}</h3>
-        }
-        {metaItems.length && metaItems.map((item, index) => (
-          <React.Fragment key={index}>
-            <span className="text-xs text-card-foreground/50">|</span>
-            <span className="text-xs font-medium text-card-foreground/80">
-              {item}
-            </span>
-          </React.Fragment>
-        ))}
+    <div className={cn('flex flex-col sm:flex-row sm:items-center justify-between sm:gap-x-3', className)}>
+      <div className="flex flex-col w-full sm:w-auto sm:flex-row sm:items-center gap-1 flex-1 min-w-0">
+        <div className="flex items-center justify-between w-full sm:w-auto gap-x-2">
+          {
+            url
+              ? (
+                  <div className="flex items-center gap-x-1 flex-wrap min-w-0">
+                    <Anchor href={url} linkText={title} canCopy={false} className="text-sm font-semibold wrap-break-word whitespace-normal text-left">
+                    </Anchor>
+                    <SquareArrowOutUpRight className="size-3 shrink-0 text-card-foreground/50 print:hidden" />
+                  </div>
+                )
+              : <h3 className="font-semibold text-sm wrap-break-word whitespace-normal text-left">{title}</h3>
+          }
+          <TimeDisplay startTime={startTime} endTime={endTime} className="sm:hidden" />
+        </div>
+        <MetaItem metaList={metaList} />
       </div>
-      <div className="text-xs text-card-foreground/60 whitespace-nowrap tabular-nums">{`${startTime} - ${endTime}`}</div>
+      <TimeDisplay startTime={startTime} endTime={endTime} className="hidden sm:block" />
     </div>
   )
 }

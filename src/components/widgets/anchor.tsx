@@ -1,79 +1,72 @@
-'use client'
-
-import type { AnchorHTMLAttributes, MouseEvent } from 'react'
-import { Check, Copy } from 'lucide-react'
-import { useState } from 'react'
+import type { LinkProps } from 'next/link'
+import type { IconWrapperProps } from './icon-wrapper'
+import { SquareArrowOutUpRight } from 'lucide-react'
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import IconWrapper from './icon-wrapper'
 
-interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  linkText: string
+type NextLinkProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps<any>> & LinkProps<any>
+
+interface AnchorProps extends NextLinkProps {
+  /**
+   * 链接文本
+   */
+  text: string
+  /**
+   * 是否下划线
+   */
   underline?: boolean
-  canCopy?: boolean
+  /**
+   * 图标
+   */
+  icon?: React.ReactNode
+  /**
+   * 是否显示图标
+   */
+  showIcon?: boolean
+  /**
+   * 图标容器自定义属性
+   */
+  iconWrapperProps?: IconWrapperProps
+  /**
+   * 自定义类名
+   */
+  className?: string
+  /**
+   * 文本类名
+   */
+  textClassName?: string
 }
 
 function Anchor(props: AnchorProps) {
-  const { href, target = '_blank', className, linkText, canCopy = true, underline = true, ...rest } = props
-  const [copied, setCopied] = useState(false)
+  const { text, underline = true, showIcon = true, icon, className, textClassName, iconWrapperProps, ...originLinkProps } = props
 
-  // 拷贝逻辑
-  const handleCopy = async (e: MouseEvent<HTMLSpanElement>) => {
-    e.preventDefault()
-    e.stopPropagation()
-    if (!href)
-      return
-    // 复制链接文本，去掉协议前缀
-    const textToCopy = href.replace(/^[a-z]+:/i, '')
-    try {
-      await navigator.clipboard.writeText(textToCopy)
-      setCopied(true)
-      // 2秒后重置图标状态
-      setTimeout(() => setCopied(false), 2000)
-    }
-    catch (err) {
-      console.error('复制失败:', err)
-    }
+  const iconComponent = icon || <SquareArrowOutUpRight className="size-3 shrink-0 text-card-foreground/50 print:hidden" />
+
+  const linkProps: NextLinkProps = {
+    target: '_blank',
+    rel: 'noopener noreferrer',
+    ...originLinkProps,
+    className: cn('inline-flex gap-x-1 items-center', className),
   }
 
   return (
-    <a
-      href={href}
-      target={target}
-      rel="noopener noreferrer"
-      className={cn('hover:text-primary/80 transition-colors', className)}
-      {...rest}
+    <Link
+      {...linkProps}
     >
-      <span className="inline-flex items-center gap-x-1.5 group/item relative">
-        <span className={cn(
-          'duration-200',
-          'hover:text-primary',
-          underline && 'group-hover/item:underline group-hover/item:underline-offset-2',
-        )}
-        >
-          {linkText}
-        </span>
-
-        {canCopy && (
-          <span
-            onClick={handleCopy}
-            role="button"
-            aria-label="Copy link"
-            className={cn(
-              'inline-flex items-center justify-center p-0.5 rounded hover:bg-muted hover:text-primary transition-all',
-              'opacity-0 group-hover/item:opacity-100',
-              'print:hidden',
-            )}
-          >
-            {copied
-              ? (
-                  <Check className="size-3 text-primary" />
-                )
-              : (
-                  <Copy className="size-3 opacity-0 group-hover/item:opacity-100 print:hidden duration-200" />
-                )}
-          </span>
-        )}
+      <span className={cn(
+        underline && 'hover:underline hover:underline-offset-2',
+        textClassName,
+      )}
+      >
+        {text}
       </span>
-    </a>
+      {showIcon && (
+        <IconWrapper className="shrink-0 text-card-foreground/50 h-full print:hidden" {...iconWrapperProps}>
+          {iconComponent}
+        </IconWrapper>
+      )}
+    </Link>
   )
 }
 

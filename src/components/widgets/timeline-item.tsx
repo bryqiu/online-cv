@@ -1,6 +1,5 @@
 import type { ClassValue } from 'clsx'
 import type { TimeRange } from '@/types'
-import { SquareArrowOutUpRight } from 'lucide-react'
 import React from 'react'
 import { cn } from '@/lib/utils'
 import Anchor from './anchor'
@@ -65,11 +64,8 @@ function TimelineItem(props: TimelineItemProps) {
           {
             url
               ? (
-                  <div className="flex items-center gap-x-1 flex-wrap min-w-0">
-                    <Anchor href={url} linkText={title} canCopy={false} className="text-sm font-semibold wrap-break-word whitespace-normal text-left">
-                    </Anchor>
-                    <SquareArrowOutUpRight className="size-3 shrink-0 text-card-foreground/50 print:hidden" />
-                  </div>
+                  <Anchor href={url} text={title} className="text-sm font-semibold wrap-break-word whitespace-normal text-left">
+                  </Anchor>
                 )
               : <h3 className="font-semibold text-sm wrap-break-word whitespace-normal text-left">{title}</h3>
           }

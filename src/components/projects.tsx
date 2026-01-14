@@ -1,25 +1,40 @@
-import type { Project as ProjectProps } from '@/types'
-import { Badge } from '@/components/ui/badge'
-import DescriptionList from './widgets/description-list'
+import type { Project } from '@/types'
+import { Star } from 'lucide-react'
+import Image from 'next/image'
+import { Badge } from './ui/badge'
+import Anchor from './widgets/anchor'
 import Section from './widgets/section'
-import TimelineItem from './widgets/timeline-item'
 
-function Projects({ projects }: { projects: ProjectProps[] }) {
+function Projects({ projects}: { projects: Project[] }) {
   return (
     <Section title="项目经验">
-      <div className="flex flex-col gap-y-1.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {
           projects.map((project, index) => (
-            <article key={index} className="flex flex-col gap-y-2">
-              <TimelineItem title={project.name} meta={project.position} startTime="2021-01" endTime="2021-02" />
-              <div className="flex gap-x-1.5 gap-y-1 items-center flex-wrap">
-                {project.techStack.length && project.techStack.map(tech => (
-                  <Badge key={tech} variant="outline" className="rounded-lg text-xs py-0">{tech}</Badge>
+            <div key={index} className="bg-card rounded-md p-3 border flex flex-col gap-y-1">
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex items-center gap-x-1 flex-1">
+                  { project.logo && typeof project.logo === 'string'
+                    ? (
+                        <Image src={project.logo} alt={project.name} className="size-4" />
+                      )
+                    : (
+                        project.logo
+                      )}
+                  <Anchor href={project.url} text={project.name} className="text-sm font-semibold w-full" textClassName="line-clamp-1" />
+                </div>
+                <div className="flex items-center gap-x-1">
+                  <Star className="size-3" />
+                  <span className="text-xs">{project.stars}</span>
+                </div>
+              </div>
+              <span className="text-xs text-card-foreground/70 line-clamp-2">{project.description}</span>
+              <div className="flex items-center gap-x-1 flex-wrap">
+                {project.techStack?.map(tech => (
+                  <Badge key={tech} className="py-0" variant="outline">{tech}</Badge>
                 ))}
               </div>
-              <span className="text-xs text-foreground">{project.summary}</span>
-              <DescriptionList items={project.description} />
-            </article>
+            </div>
           ))
         }
       </div>

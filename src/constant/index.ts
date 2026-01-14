@@ -78,7 +78,7 @@ export const resumeData: ResumeSchema = {
     },
   ],
 
-  projects: [
+  projectExperiences: [
     {
       name: 'Titan-Engine：分布式低代码渲染内核',
       summary: '为超大规模企业级应用设计的 UI 编排与自动化协议标准。',
@@ -115,7 +115,7 @@ export const resumeData: ResumeSchema = {
     },
   ],
 
-  openSourceProjects: [
+  projects: [
     {
       name: 'v-fast-table',
       description: '一个追求极致性能的 Vue 3 万级数据虚拟滚动表格插件。',

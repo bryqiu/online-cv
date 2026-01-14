@@ -1,6 +1,7 @@
 import ActionToolbar from '@/components/action-toolbar'
 import Educations from '@/components/educations'
 import Introduce from '@/components/introduce'
+import ProjectExperience from '@/components/project-experience'
 import Projects from '@/components/projects'
 
 import Skills from '@/components/skills'
@@ -23,10 +24,15 @@ export default function Home() {
           <WorkExperience works={resumeData.workExperiences}></WorkExperience>
         </BlurFade>
         <BlurFade delay={0.3}>
-          <Projects projects={resumeData.projects}></Projects>
+          <ProjectExperience projects={resumeData.projectExperiences}></ProjectExperience>
         </BlurFade>
         <BlurFade delay={0.4}>
           <Educations educations={resumeData.educations}></Educations>
+        </BlurFade>
+        <BlurFade delay={0.5}>
+          {
+            resumeData.projects?.length && <Projects projects={resumeData.projects}></Projects>
+          }
         </BlurFade>
       </section>
     </main>

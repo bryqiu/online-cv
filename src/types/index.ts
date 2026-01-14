@@ -34,7 +34,7 @@ export interface WorkExperience extends TimeRange {
 /**
  * 项目经验
  */
-export interface Project {
+export interface projectExperience {
   /**
    * 项目名称
    */
@@ -85,13 +85,17 @@ export interface Education extends TimeRange {
 }
 
 /**
- * 开源项目
+ * 开源项目、产品
  */
-interface OpenSourceProject {
+export interface Project {
   /**
    * 项目名称
    */
   name: string
+  /**
+   * Logo 链接
+   */
+  logo?: string | React.ReactNode
   /**
    * 项目描述
    */
@@ -107,7 +111,7 @@ interface OpenSourceProject {
   /**
    * 技术栈
    */
-  techStack?: string[] // 开源项目也应该有技术栈
+  techStack?: string[]
 }
 
 export type SocialType = 'x' | 'instagram' | 'jueJin' | 'github' | 'linkedin' | 'blog'
@@ -182,7 +186,7 @@ export interface ResumeSchema {
   /**
    * 项目经验
    */
-  projects: Project[]
+  projectExperiences: projectExperience[]
   /**
    * 技能
    */
@@ -192,9 +196,9 @@ export interface ResumeSchema {
    */
   educations: Education[]
   /**
-   * 开源项目
+   * 开源项目、产品
    */
-  openSourceProjects?: OpenSourceProject[]
+  projects?: Project[]
   meta?: {
     theme?: 'light' | 'dark' | 'system'
     lastModified?: string

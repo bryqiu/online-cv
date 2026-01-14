@@ -20,13 +20,27 @@ export const resumeData: ResumeSchema = {
         type: 'phone',
         value: '+86 139-8888-9999',
       },
+    ],
+    socialMethods: [
       {
-        type: 'x',
+        type: 'instagram',
+        label: 'Instagram',
+        value: 'https://github.com/bryqiu/Blog',
+      },
+      {
+        type: 'jueJin',
+        label: '掘金',
         value: 'mock-river-arc',
       },
       {
-        type: 'github',
+        type: 'linkedin',
+        label: 'LinkedIn',
         value: 'mock-river-arc',
+      },
+      {
+        type: 'blog',
+        label: '个人博客',
+        value: 'https://bryqiu.com',
       },
     ],
   },

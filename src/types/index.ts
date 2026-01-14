@@ -110,12 +110,26 @@ interface OpenSourceProject {
   techStack?: string[] // 开源项目也应该有技术栈
 }
 
-export type SocialPlatform = 'x' | 'instagram' | 'jueJin' | 'github' | 'linkedin' | 'blog' | 'wx'
+export type SocialType = 'x' | 'instagram' | 'jueJin' | 'github' | 'linkedin' | 'blog'
 
-export type CommunicationType = 'email' | 'phone' | 'wx'
-
+export type ContactType = 'email' | 'phone' | 'wx'
 export interface ContactMethod {
-  type: CommunicationType | SocialPlatform
+  type: ContactType
+  value: string
+}
+
+export interface SocialMethod {
+  /**
+   * 社交平台类型
+   */
+  type: SocialType
+  /**
+   * 名称
+   */
+  label?: string
+  /**
+   * 链接
+   */
   value: string
 }
 
@@ -147,6 +161,10 @@ export interface Introduce {
    * 联系方式
    */
   contactMethods: ContactMethod[]
+  /**
+   * 社交媒体账号
+   */
+  socialMethods: SocialMethod[]
 }
 
 /**

@@ -47,7 +47,7 @@ function Anchor(props: AnchorProps) {
     target: '_blank',
     rel: 'noopener noreferrer',
     ...originLinkProps,
-    className: cn('inline-flex gap-x-1 items-center', className),
+    className: cn('inline align-baseline', className),
   }
 
   return (
@@ -62,7 +62,7 @@ function Anchor(props: AnchorProps) {
         {text}
       </span>
       {showIcon && (
-        <IconWrapper className="shrink-0 text-card-foreground/50 h-full print:hidden" {...iconWrapperProps}>
+        <IconWrapper className="inline-flex justify-center items-center ml-1 translate-y-[2px] shrink-0 text-card-foreground/50 print:hidden" {...iconWrapperProps}>
           {iconComponent}
         </IconWrapper>
       )}

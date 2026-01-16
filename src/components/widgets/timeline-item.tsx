@@ -23,9 +23,9 @@ interface TimelineItemProps extends TimeRange {
   className?: ClassValue
 }
 
-function MetaItem({ metaList }: { metaList: string[] }) {
+function Meta({ metaList }: { metaList: string[] }) {
   return (
-    <div className="flex items-center flex-wrap sm:mt-0">
+    <div className="flex items-center flex-wrap sm:mt-0 shrink-0">
       {' '}
       {metaList.length && metaList.map((item, index) => (
         <React.Fragment key={index}>
@@ -58,7 +58,7 @@ function TimelineItem(props: TimelineItemProps) {
   const metaList = Array.isArray(meta) ? meta : [meta]
 
   return (
-    <div className={cn('flex flex-col sm:flex-row sm:items-center justify-between sm:gap-x-3', className)}>
+    <div className={cn('flex flex-col sm:flex-row sm:items-center justify-between sm:gap-x-4', className)}>
       <div className="flex flex-col w-full sm:w-auto sm:flex-row sm:items-center gap-1 flex-1 min-w-0">
         <div className="flex items-center justify-between w-full sm:w-auto gap-x-2">
           {
@@ -71,7 +71,7 @@ function TimelineItem(props: TimelineItemProps) {
           }
           <TimeDisplay startTime={startTime} endTime={endTime} className="sm:hidden" />
         </div>
-        <MetaItem metaList={metaList} />
+        <Meta metaList={metaList} />
       </div>
       <TimeDisplay startTime={startTime} endTime={endTime} className="hidden sm:block" />
     </div>

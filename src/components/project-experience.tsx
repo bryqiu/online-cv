@@ -14,7 +14,7 @@ function ProjectExperience({ projects }: { projects: projectExperienceProps[] })
               <TimelineItem title={project.name} meta={project.position} startTime="2021-01" endTime="2021-02" />
               <div className="flex gap-x-1.5 gap-y-1 items-center flex-wrap">
                 {project.techStack.length && project.techStack.map(tech => (
-                  <Badge key={tech} variant="outline" className="rounded-lg text-xs py-0">{tech}</Badge>
+                  <Badge key={tech} variant="secondary" className="rounded text-xs py-0">{tech}</Badge>
                 ))}
               </div>
               <span className="text-xs text-foreground">{project.summary}</span>
